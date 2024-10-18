@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Counter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Comic Neue', cursive;
+            background-image: url('https://wallpapers.com/images/hd/alphabet-1920-x-1080-background-mqc3qzz11nkg6ade.jpg');
+            background-size: cover;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+            position: relative; /* Added for positioning the button */
+        }
+        h1 {
+            color: darkgreen;
+            font-size: 3em;
+        }
+        .back-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #ff6347;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .back-button:hover {
+            background-color: #ff4500; /* Button hover color */
+        }
+        .video-container {
+            margin: 20px;
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            padding: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            width: 300px;
+        }
+        .video-image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        a {
+            display: block;
+            margin: 10px 0;
+            background-color: #ff6347;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+        a:hover {
+            background-color: #ff4500;
+        }
+        .progress-container {
+            margin: 20px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 30px;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .progress-bar {
+            height: 100%;
+            background: red;
+            width: 0%;
+            transition: width 0.5s;
+        }
+    </style>
+</head>
+<body>
+
+<button class="back-button" onclick="window.location.href='///C:/Users/PRAISE/Desktop/Software/mainmenu.html';">Back to Main Menu</button> <!-- Replace # with your main menu URL -->
+
+<h1>Read Alphabets!</h1>
+
+<div class="video-container">
+    <img src="https://i.ytimg.com/an_webp/RiYzD1h-YVQ/mqdefault_6s.webp?du=3000&sqp=CPyqybgG&rs=AOn4CLBW1rMPFQkRgy-NHVt5Ot8cJAwNUg" alt="Video 1" class="video-image">
+    <a href="https://youtu.be/RiYzD1h-YVQ" target="_blank" onclick="videoEnded()">Video 1</a>
+</div>
+
+<div class="video-container">
+    <img src="https://i.ytimg.com/an_webp/drlIUqRYM-w/mqdefault_6s.webp?du=3000&sqp=CIjBybgG&rs=AOn4CLC70kde3y8WtXzGvbjyYgbD6D8U1A" alt="Video 2" class="video-image">
+    <a href="https://youtu.be/drlIUqRYM-w" target="_blank" onclick="videoEnded()">Video 2</a>
+</div>
+
+<div class="video-container">
+    <img src="https://i.ytimg.com/an_webp/p-kAI-qOeJA/mqdefault_6s.webp?du=3000&sqp=CIDNybgG&rs=AOn4CLBNLXTjWcvCmmGmFEk8R9o2FXaKMw" alt="Video 3" class="video-image">
+    <a href="https://youtu.be/p-kAI-qOeJA" target="_blank" onclick="videoEnded()">Video 3</a>
+</div>
+
+<div class="video-container">
+    <img src="https://i.ytimg.com/an_webp/tKsIi1MH4lw/mqdefault_6s.webp?du=3000&sqp=CICgybgG&rs=AOn4CLB94Zs2y2ICM6FP_odC4VUBzRwumQ" alt="Video 4" class="video-image">
+    <a href="https://youtu.be/tKsIi1MH4lw" target="_blank" onclick="videoEnded()">Video 4</a>
+</div>
+
+<div class="video-container">
+    <img src="https://i.ytimg.com/an_webp/bVeP6JISfyw/mqdefault_6s.webp?du=3000&sqp=CPzPybgG&rs=AOn4CLDUDw-fb2V1-pvg5ORcd6IRB8kg_Q" alt="Video 5" class="video-image">
+    <a href="https://youtu.be/jvnomMjT30M" target="_blank" onclick="videoEnded()">Video 5</a>
+</div>
+
+<div class="video-container">
+    <img src="https://i.ytimg.com/an_webp/hq3yfQnllfQ/mqdefault_6s.webp?du=3000&sqp=CNzOybgG&rs=AOn4CLB4BtJL3v5YSKgqDfASSMK0ryegkA" alt="Video 6" class="video-image">
+    <a href="https://youtu.be/hq3yfQnllfQ" target="_blank" onclick="videoEnded()">Video 6</a>
+</div>
+
+<div class="progress-container">
+    <div class="progress-bar" id="progressBar"></div>
+</div>
+
+<script>
+    let videosWatched = 0;
+
+    function videoEnded() {
+        videosWatched++;
+        updateProgress();
+    }
+
+    function updateProgress() {
+        const progressBar = document.getElementById('progressBar');
+        const progressPercentage = (videosWatched / 6) * 100;
+        progressBar.style.width = progressPercentage + '%';
+    }
+</script>
+
+</body>
+</html>
